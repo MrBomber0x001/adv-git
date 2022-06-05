@@ -33,3 +33,4 @@ This article is divided into levels:
 - <a href="http://nvie.com/posts/a-successful-git-branching-model/">git-flow blog post</a>
 - <a href="http://scottchacon.com/2011/08/31/github-flow.html">GitHub Flow</a>
 - <a href="http://www.codeschool.com/courses/discover-devtools">Discover DevTools</a>
+- <a href="https://www.youtube.com/playlist?list=PLWXRxAK4bUzfhL6_mnrc-P4HCPv0p4AuT">Advanced Git Lectures From Ahmed Alarabawy</a>
