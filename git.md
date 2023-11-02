@@ -177,47 +177,69 @@ git branch -d <B_name>
 
 ```
 
-6-cloning (Downloading) repo on your local:
+- cloning (Downloading) repo on your local:
+
+```sh
 git clone <url> <where to put>
     git clone ../remoterepo . //that's means you can clone local repo sa well
-7-viewing info about remote repos:
+```
+
+-viewing info about remote repos:
+```
 git remote -v
 git branch -a
-8-pushing changes to remote repo:
+```
+
+- pushing changes to remote repo:
 8-1: (commiting it locally first)
  after changing some code or whatever in your file, do the same thing above
+```sh
 git diff
 git status
 git add -A
 git commit -m "Modified line number #36 on index.html"
-8-2 Then push (committing it remotley) before actually doing this you should first create on github repo called "origin" or anything you wnat or you can do this manually from the CLI
-git remote add  origin htttps://github.com/MrBomber0x001/origin.git
+```
 
+- Then push (committing it remotely) before actually doing this you should first create on github repo called "origin" or anything you want or you can do this manually from the CLI
+git remote add  origin htttps://github.com/MrBomber0x001/origin.git
+```
 git pull origin master
 git push origin master
+```
+**common workflow**:
+### common scenario
 
-**common workflow:
-===common scenario===
-let's assume you have a repo project of website, you wan't to have two differennt style of this website, and each version has it's unique functionalities
-you can do this by make branch for every style, so you can work seperatley on a branch without corrputing the other one
-1-create a branch for a desire feature:
+let's assume you have a repo project of a website, you want to have two different style of this website, and each version has its unique functionalities
+you can do this by making a branch for every style, so you can work separately on a branch without corrupting the other one.
+
+-create a branch for a desired feature:
+```
 git branch <name>
 git branch //to know the branches you have
 git checkout <name> //for switching to this branch
 //then pushing the branch to the remote repo
 git push -u origin <nameofbranch>
-2-merging branches:
+```
+-merging branches:
+```
 git branch --merged //to show the merged
 git merge <nameofbranch>
 //then push the changes to the master branch
-3-deleting branch:
+```
+-deleting branch:
+```
 git branch -d <nameofbranch> //deleting it from the local repo
 //then we can delete it from the remote repo or just leave it there
 git push origin --delete <branchname>
+```
 
-**generating SSH key for authentication with Github:
-1-searching for existing SSH key:
+
+**generating SSH key for authentication with Github**:
+
+searching for existing SSH key:
+```
 => ls ~/.ssh/id_rsa.pub (this is the file where your ssh key are stored)
+```
 you can check those too:
 id_rsa.pub
 id_ecdsa.pub
@@ -228,20 +250,19 @@ id_ed25519.pub
 -you can locate your ssh in the directory listed above ".ssh/-----"
 -you can use the generated ssh key with any ssh agents
 
---------------------
-
 3-testing SSH key:
+```
 ssh -T git@github.com (this will add github.com as known server and authenticate it)
+```
 
---------------------
-
+```
 cat ~/.gitconfig
 git config --system <option> ==> for the system users (ALL)
 git config --global <option> ==> for the current user
+```
 
------
+**Writing commit messages**:
 
-**Writing commit messages:
 -use "present tense" not "past tense", you are labeling what the commit not what you as-the creator-were doing, e.g:
 "fixes bug", "fix bug" not "fixed bug"
 -can develop shorthand for your organization:
@@ -261,33 +282,32 @@ git config --global <option> ==> for the current user
 
 -----------
 
-Git architecutre:
+Git architecture:
 -git generates checksum for each change set:
-    -checksum algorithm convert data into simple number
-    -same data alwatys equals the same checksum, changing the data changes the checksum
+    -checksum algorithm converts data into a simple number
+    -same data always equals the same checksum, changing the data changes the checksum
 -git use SHA-1 hash algorithm:
  40 character hexadeciaml
 
 HEAD:
-git refernces a pointer called HEAD, it's main job is to point to a specific commit in our repo, as we making new commits the HEAD pointer is going to change to move to a new commit
+git reference a pointer called HEAD, its main job is to point to a specific commit in our repo, as we making new commits the HEAD pointer is going to change to move to a new commit
 HEAD point to the parent of the next commit,
-it points to the place where we're going to start recording next commits
-it's the place where we left off in our repo for the things we've commited
+it points to the place where we're going to start recording the next commits
+it's the place where we left off in our repo for the things we've committed
 HEAD is pointing at the last commit of the current branch
-
+```
 cd .git
 cat HEAD
 cd refs
 cd head
 cat master
-
---------
-
+```
+```
 git diff --staged
 git diff contact.html
 or the best
 git diff --color-words contact.html  
---
+```
 
 removing:
 
@@ -297,7 +317,7 @@ git rm file-to-be-deleted.txt => this will go into staging area and we can commi
 ----
 
 renaming and moving:
---> you've here two option, either to rename it yourslef, or to use git to rename it for you (this step will shorten the journey)
+--> You've here two option, either to rename it yourslef, or to use git to rename it for you (this step will shorten the journey)
 when you rename a file, git recognize that you maybe actually delete it
 so you add the newly renamed file and git rm the orignal file , let's say we've file called "first_file.txt" and we're going to change it to "primary_file.txt"
 mv first_file.txt primary_file.txt
